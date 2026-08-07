@@ -45,17 +45,17 @@ Only the first ten elements of `Z` are displayed, but the entire vector is proce
 
 | Vector size | C average | x86-64 average | x86-64 speedup |
 |---|---:|---:|---:|
-| `2^20` | 0.003603 s | 0.001656 s | 2.176x |
-| `2^24` | 0.067406 s | 0.022513 s | 2.994x |
-| `2^28` | 1.109990 s | 0.346289 s | 3.205x |
+| `2^20` | 0.003854 s | 0.001250 s | 3.083x |
+| `2^24` | 0.070484 s | 0.020999 s | 3.357x |
+| `2^28` | 1.124699 s | 0.355864 s | 3.160x |
 
 ### Release Mode
 
 | Vector size | C average | x86-64 average | x86-64 speedup |
 |---|---:|---:|---:|
-| `2^20` | 0.001443 s | 0.001445 s | 0.999x |
-| `2^24` | 0.022757 s | 0.021638 s | 1.052x |
-| `2^28` | 0.355173 s | 0.347190 s | 1.023x |
+| `2^20` | 0.001384 s | 0.001374 s | 1.007x |
+| `2^24` | 0.023316 s | 0.022412 s | 1.040x |
+| `2^28` | 0.379363 s | 0.360273 s | 1.053x |
 
 The speedup was calculated using:
 
@@ -67,9 +67,9 @@ C average execution time / x86-64 average execution time
 
 As shown in the table above, the x86-64 implementation was considerably faster than the c version. The more the size increases, the larger the difference in speed is present. Comparing Debug Mode and Release Mode, we can see that the Debug mode is faster overall. This is due to less optimization to the C code, as opposed to the x86-64 version being able to directly perform operations. 
 
-In Release mode, the C and x86-64 implementations produced similar execution times. At `2^20`, the C result was slightly faster by approximately 2 ms. At `2^24` and `2^28`, the x86-64 implementation was approximately `1.052x` and `1.023x` faster, respectively.
+In Release mode, the C and x86-64 implementations produced similar execution times. At `2^20`, the speedup rate was `1.007x`, and at `2^24` and `2^28`, the x86-64 implementation was approximately `1.052x` and `1.023x` faster, respectively.
 
-The differences within the Release mode being smaller means that he compiler being more optimized allows the C version to be more efficient.
+The differences within the Release mode being smaller means that the compiler being more optimized allows the C version to be more efficient.
 
 As for the vectors, its performance is affected depending on the size it is assigned. The bigger it gets, the more memory and cache is used for performance.
 
